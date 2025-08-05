@@ -5,60 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Leader’s School — Diagnóstico de Palestrante</title>
   <style>
-    :root{
-      --bg:#faf4e8;
-      --primary:#4a1013;
-      --accent:#ea9c28;
-      --accent-2:#ca6b2a;
-      --text:#1b1b1b;
-      --muted:#8c8c84;
-      --card:#ffffff;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0; background:var(--bg); color:var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      line-height:1.45;
-    }
-    .wrap{max-width:880px; margin:0 auto; padding:24px;}
-    header, main, footer{display:block}
-    .card{background:var(--card); border-radius:16px; box-shadow:0 6px 18px rgba(0,0,0,.08); padding:24px}
-    .center{text-align:center}
-    .brand-badge{display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:12px}
-    .brand-badge img{height:56px; width:auto}
-    h1{font-size:clamp(1.4rem, 2vw + 1rem, 2.2rem); margin:8px 0 0 0; color:var(--primary)}
-    p.lead{color:#3a3a36; margin:.5rem 0 0 0}
-    .btn{appearance:none; border:0; background:var(--primary); color:#fff; padding:14px 18px; border-radius:12px; font-weight:600; cursor:pointer}
-    .btn.secondary{background:var(--accent)}
-    .btn.ghost{background:transparent; border:2px solid var(--primary); color:var(--primary)}
-    .btn-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-    .step{display:none}
-    .step.active{display:block}
-    .q-header{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px}
-    .progress{height:8px; background:#eadfce; border-radius:999px; overflow:hidden}
-    .progress > div{height:100%; width:0; background:linear-gradient(90deg,var(--accent),var(--accent-2)); transition:width .35s ease}
-    fieldset{border:0; padding:0; margin:0}
-    .options{display:grid; gap:10px}
-    .opt{
-      display:flex; align-items:center; gap:12px; padding:12px; border:2px solid #eee; background:#fff; border-radius:12px; cursor:pointer;
-      transition: border-color .2s ease, box-shadow .2s ease;
-    }
-    .opt:hover{border-color:var(--accent)}
-    .opt input{accent-color:var(--accent); width:18px; height:18px}
-    .muted{color:var(--muted)}
-    .spinner{display:flex; flex-direction:column; align-items:center; gap:12px; padding:32px}
-    .dots{display:inline-flex; gap:6px}
-    .dot{width:10px; height:10px; background:var(--accent); border-radius:50%; animation:bounce 1.2s infinite}
-    .dot:nth-child(2){animation-delay:.15s}
-    .dot:nth-child(3){animation-delay:.3s}
-    @keyframes bounce{0%,80%,100%{transform:scale(0.7); opacity:.5}40%{transform:scale(1); opacity:1}}
-    .result-title{font-size:1.4rem; color:var(--primary); margin:0}
-    .result-pill{display:inline-block; background:#fff4e1; border:1px solid #ffe0ad; color:#7a3d00; padding:6px 10px; border-radius:999px; font-weight:600}
-    .two-col{display:grid; grid-template-columns:1fr; gap:16px}
-    @media(min-width:760px){.two-col{grid-template-columns:1fr 1fr}}
-    .list{margin:0; padding-left:18px}
-    footer{padding:28px 0; text-align:center; color:var(--muted)}
-    footer img{height:22px; opacity:.85}
+    :root{--bg:#faf4e8;--primary:#4a1013;--accent:#ea9c28;--accent-2:#ca6b2a;--text:#1b1b1b;--muted:#8c8c84;--card:#ffffff;}
+    *{box-sizing:border-box;}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.45;}
+    .wrap{max-width:880px;margin:0 auto;padding:24px;}
+    .card{background:var(--card);border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.08);padding:24px;}
+    .center{text-align:center;}
+    .brand-badge{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px;}
+    .brand-badge img{height:56px;width:auto;}
+    h1{font-size:clamp(1.4rem,2vw+1rem,2.2rem);margin:8px 0 0;color:var(--primary);}
+    p.lead{color:#3a3a36;margin:.5rem 0 0;}
+    .btn{appearance:none;border:0;background:var(--primary);color:#fff;padding:14px 18px;border-radius:12px;font-weight:600;cursor:pointer;}
+    .btn.ghost{background:transparent;border:2px solid var(--primary);color:var(--primary);}
+    .btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .step{display:none;}
+    .step.active{display:block;}
+    .q-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
+    .progress{height:8px;background:#eadfce;border-radius:999px;overflow:hidden;}
+    .progress > div{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .35s ease;}
+    fieldset{border:0;padding:0;margin:0;}
+    .options{display:grid;gap:10px;}
+    .opt{display:flex;align-items:center;gap:12px;padding:12px;border:2px solid #eee;background:#fff;border-radius:12px;cursor:pointer;transition:border-color .2s ease,box-shadow .2s ease;}
+    .opt:hover{border-color:var(--accent);}
+    .opt input{accent-color:var(--accent);width:18px;height:18px;}
+    .muted{color:var(--muted);}
+    .spinner{display:flex;flex-direction:column;align-items:center;gap:12px;padding:32px;}
+    .dots{display:inline-flex;gap:6px;}
+    .dot{width:10px;height:10px;background:var(--accent);border-radius:50%;animation:bounce 1.2s infinite;}
+    .dot:nth-child(2){animation-delay:.15s;}
+    .dot:nth-child(3){animation-delay:.3s;}
+    @keyframes bounce{0%,80%,100%{transform:scale(.7);opacity:.5;}40%{transform:scale(1);opacity:1;}}
+    .result-title{font-size:1.4rem;color:var(--primary);margin:0;}
+    .result-pill{display:inline-block;background:#fff4e1;border:1px solid #ffe0ad;color:#7a3d00;padding:6px 10px;border-radius:999px;font-weight:600;}
+    .two-col{display:grid;grid-template-columns:1fr;gap:16px;}
+    @media(min-width:760px){.two-col{grid-template-columns:1fr 1fr;}}
+    .list{margin:0;padding-left:18px;}
+    footer{padding:28px 0;text-align:center;color:var(--muted);}
+    footer img{height:22px;opacity:.85;}
   </style>
 </head>
 <body>
@@ -73,7 +56,7 @@
         <h1>Descubra seu Perfil de Palestrante</h1>
         <p class="lead">Um diagnóstico rápido para você comunicar com mais clareza, impacto e verdade.</p>
         <div style="height:18px"></div>
-        <button class="btn" onclick="goTo(1)">Iniciar diagnóstico</button>
+        <button id="startBtn" class="btn">Iniciar diagnóstico</button>
       </div>
     </section>
 
@@ -81,16 +64,14 @@
     <section id="step-questions" class="step">
       <div class="card">
         <div class="q-header">
-          <div style="font-weight:600; color:var(--primary)"><span id="qIndex">1</span>/4</div>
+          <div style="font-weight:600;color:var(--primary)"><span id="qIndex">1</span>/4</div>
           <div class="progress" style="flex:1"><div id="bar"></div></div>
-          <img src="logotipo-pretoebranco.png" alt="Leader’s School" style="height:24px; opacity:.9"/>
+          <img src="logotipo-pretoebranco.png" alt="Leader’s School" style="height:24px;opacity:.9"/>
         </div>
-
         <div id="qContainer"></div>
-
         <div class="btn-row" style="margin-top:12px">
-          <button class="btn ghost" onclick="prevQ()">Voltar</button>
-          <button class="btn" onclick="nextQ()">Próximo</button>
+          <button class="btn ghost" id="prevBtn">Voltar</button>
+          <button class="btn" id="nextBtn">Próximo</button>
         </div>
       </div>
     </section>
@@ -115,11 +96,10 @@
           <div style="height:8px"></div>
           <span id="resPill" class="result-pill"></span>
         </div>
-
         <div style="height:18px"></div>
         <div class="two-col">
-          <div class="card" style="box-shadow:none; border:1px solid #eee">
-            <h3 style="margin-top:0; color:var(--primary)">Os 5 tipos de palestrante</h3>
+          <div class="card" style="box-shadow:none;border:1px solid #eee">
+            <h3 style="margin-top:0;color:var(--primary)">Os 5 tipos de palestrante</h3>
             <ul class="list">
               <li><strong>Estrategista (A)</strong>: estruturado, objetivo, conduz com clareza de plano.</li>
               <li><strong>Inspirador (B)</strong>: emocional, envolvente, move pessoas pela energia.</li>
@@ -128,8 +108,8 @@
               <li><strong>Analítico (E)</strong>: lógico, orientado a dados, constrói credibilidade racional.</li>
             </ul>
           </div>
-          <div class="card" style="box-shadow:none; border:1px solid #eee">
-            <h3 style="margin-top:0; color:var(--primary)">Os 5 tipos de discurso</h3>
+          <div class="card" style="box-shadow:none;border:1px solid #eee">
+            <h3 style="margin-top:0;color:var(--primary)">Os 5 tipos de discurso</h3>
             <ul class="list">
               <li><strong>Estratégico</strong>: foco em caminho, prioridades e próximos passos.</li>
               <li><strong>Inspiracional</strong>: foco em propósito, coragem e visão de futuro.</li>
@@ -139,10 +119,9 @@
             </ul>
           </div>
         </div>
-
         <div style="height:16px"></div>
-        <div class="card" style="box-shadow:none; border:1px dashed #e6e0d2; background:#fffaf0">
-          <h3 style="margin-top:0; color:#7a3d00">Espelho de Reflexão Pessoal — anote na sua apostila</h3>
+        <div class="card" style="box-shadow:none;border:1px dashed #e6e0d2;background:#fffaf0">
+          <h3 style="margin-top:0;color:#7a3d00">Espelho de Reflexão Pessoal — anote na sua apostila</h3>
           <ul class="list">
             <li>Perfil predominante (letra + título): ______</li>
             <li>Me identifiquei porque: ______</li>
@@ -153,174 +132,43 @@
             <li>Próximo passo revelado pelo diagnóstico: ______</li>
           </ul>
         </div>
-
         <div class="btn-row" style="margin-top:16px">
-          <button class="btn secondary" onclick="goTo(0)">Refazer diagnóstico</button>
+          <button class="btn secondary" id="resetBtn">Refazer diagnóstico</button>
         </div>
       </div>
     </section>
 
     <footer>
-      <div class="wrap" style="padding:0; display:flex; flex-direction:column; align-items:center; gap:6px">
-        <img src="LOGOTIPO-BRANCO-2.png" alt="Leader’s School" />
+      <div class="wrap" style="padding:0;display:flex;flex-direction:column;align-items:center;gap:6px">
+        <img src="LOGOTIPO-BRANCO-2.png" alt="Leader’s School"/>
         <small class="muted">Leader’s School — Desenvolvido por Paulo Afonso</small>
       </div>
     </footer>
-
   </div>
-
   <script>
-    const questions = [
-      {
-        title: "Quando estou diante de uma plateia, meu maior medo é…",
-        options: [
-          { key:'A', label:'Esquecer o que falar' },
-          { key:'B', label:'Ser julgado' },
-          { key:'C', label:'Não engajar ninguém' },
-          { key:'D', label:'Não gerar impacto' },
-          { key:'E', label:'Ser mal interpretado' },
-        ]
-      },
-      {
-        title: "Durante minha fala, eu costumo…",
-        options: [
-          { key:'A', label:'Ser direto, objetivo' },
-          { key:'B', label:'Contar histórias emocionantes' },
-          { key:'C', label:'Explicar de forma didática' },
-          { key:'D', label:'Improvisar com humor' },
-          { key:'E', label:'Apresentar dados e lógica' },
-        ]
-      },
-      {
-        title: "Para prender atenção, confio no meu…",
-        options: [
-          { key:'A', label:'Planejamento e estrutura' },
-          { key:'B', label:'Emoção e energia' },
-          { key:'C', label:'Clareza didática' },
-          { key:'D', label:'Carisma espontâneo' },
-          { key:'E', label:'Consistência racional' },
-        ]
-      },
-      {
-        title: "Me vejo mais como alguém que é…",
-        options: [
-          { key:'A', label:'Estratégico e organizado' },
-          { key:'B', label:'Inspirador e motivador' },
-          { key:'C', label:'Educador preciso' },
-          { key:'D', label:'Improvisador natural' },
-          { key:'E', label:'Analítico e lógico' },
-        ]
-      }
-    ];
-
-    const keyToProfile = {
-      'A': { name:'Estrategista', desc:'Estrutura, objetividade e direção clara. Você organiza ideias para conduzir o público ao destino certo.' },
-      'B': { name:'Inspirador', desc:'Emoção e visão. Você move pessoas com energia autêntica e propósito.' },
-      'C': { name:'Professor', desc:'Didática e clareza. Você explica por etapas e torna o complexo simples.' },
-      'D': { name:'Improvisador', desc:'Presença e espontaneidade. Seu carisma cria conexão no momento.' },
-      'E': { name:'Analítico', desc:'Método e lógica. Você sustenta sua mensagem com dados e raciocínio.' },
-    };
-
-    let current = 0;
-    const answers = [];
-
-    const qIndexEl = document.getElementById('qIndex');
-    const barEl = document.getElementById('bar');
-    const qContainer = document.getElementById('qContainer');
-
-    function goTo(step){
-      const ids=['step-welcome','step-questions','step-processing','step-result'];
-      ids.forEach((id,idx)=>{
-        document.getElementById(id).classList.toggle('active', idx===step);
-      });
-      if(step===1){
-        current = 0; answers.length=0; renderQ(); updateProgress();
-      }
-    }
-
-    function renderQ(){
-      const q = questions[current];
-      qIndexEl.textContent = (current+1);
-      qContainer.innerHTML = `
-        <h2 style="margin:8px 0 12px 0; color:var(--primary)">${q.title}</h2>
-        <fieldset class="options">
-          ${q.options.map(opt=>`
-            <label class='opt'>
-              <input type='radio' name='q${current}' value='${opt.key}' ${answers[current]===opt.key?"checked":""} />
-              <span><strong>${opt.key})</strong> ${opt.label}</span>
-            </label>
-          `).join('')}
-        </fieldset>
-      `;
-    }
-
-    function updateProgress(){
-      const pct = ((current)/questions.length)*100;
-      barEl.style.width = pct+"%";
-    }
-
-    function nextQ(){
-      const sel = document.querySelector(\`input[name='q\${current}']:checked\`);
-      if(!sel){ alert('Selecione uma alternativa para continuar.'); return; }
-      answers[current] = sel.value;
-
-      if(current < questions.length-1){
-        current++; renderQ(); updateProgress();
-      } else {
-        barEl.style.width = '100%';
-        processResult();
-      }
-    }
-
-    function prevQ(){
-      if(current===0){ goTo(0); return; }
-      current--; renderQ(); updateProgress();
-    }
-
-    function processResult(){
-      goTo(2);
-      const messages=[
-        'Analisando suas respostas…',
-        'Calculando seu perfil de palestrante…',
-        'Concluído.'
+    window.addEventListener('DOMContentLoaded', () => {
+      const questions=[
+        {title:"Quando estou diante de uma plateia, meu maior medo é…",options:[{key:'A',label:'Esquecer o que falar'},{key:'B',label:'Ser julgado'},{key:'C',label:'Não engajar ninguém'},{key:'D',label:'Não gerar impacto'},{key:'E',label:'Ser mal interpretado'}]},
+        {title:"Durante minha fala, eu costumo…",options:[{key:'A',label:'Ser direto, objetivo'},{key:'B',label:'Contar histórias emocionantes'},{key:'C',label:'Explicar de forma didática'},{key:'D',label:'Improvisar com humor'},{key:'E',label:'Apresentar dados e lógica'}]},
+        {title:"Para prender atenção, confio no meu…",options:[{key:'A',label:'Planejamento e estrutura'},{key:'B',label:'Emoção e energia'},{key:'C',label:'Clareza didática'},{key:'D',label:'Carisma espontâneo'},{key:'E',label:'Consistência racional'}]},
+        {title:"Me vejo mais como alguém que é…",options:[{key:'A',label:'Estratégico e organizado'},{key:'B',label:'Inspirador e motivador'},{key:'C',label:'Educador preciso'},{key:'D',label:'Improvisador natural'},{key:'E',label:'Analítico e lógico'}]}
       ];
-      let i=0;
-      const procMsg=document.getElementById('procMsg');
-      const tick=()=>{
-        procMsg.textContent = messages[i];
-        i++;
-        if(i<messages.length){ setTimeout(tick, 900); }
-        else { setTimeout(showResult, 600); }
-      };
-      tick();
-    }
-
-    function showResult(){
-      const counts = {A:0,B:0,C:0,D:0,E:0};
-      answers.forEach(k=>counts[k]++);
-      const sorted = Object.entries(counts).sort((a,b)=>b[1]-a[1]);
-      const top = sorted[0];
-      const second = sorted[1];
-
-      const resTitle = document.getElementById('resTitle');
-      const resSubtitle = document.getElementById('resSubtitle');
-      const resPill = document.getElementById('resPill');
-
-      if(top[1]===second[1] && top[1]!==0){
-        const p1 = keyToProfile[top[0]].name;
-        const p2 = keyToProfile[second[0]].name;
-        resTitle.textContent = \`\${p1} + \${p2}\`;
-        resSubtitle.textContent = \`Bom, parece que você tem um perfil de palestrante que transita entre o/a \${p1} e \${p2}.\`;
-        resPill.textContent = \`Empate: \${top[1]}×\${second[1]}\`;
-      } else {
-        const p = keyToProfile[top[0]];
-        resTitle.textContent = p.name;
-        resSubtitle.textContent = p.desc;
-        resPill.textContent = \`Predominante: \${top[1]} ponto(s)\`;
-      }
-
-      goTo(3);
-    }
+      const keyToProfile={A:{name:'Estrategista',desc:'Estrutura, objetividade e direção clara. Você organiza ideias para conduzir o público ao destino certo.'},B:{name:'Inspirador',desc:'Emoção e visão. Você move pessoas com energia autêntica e propósito.'},C:{name:'Professor',desc:'Didática e clareza. Você explica por etapas e torna o complexo simples.'},D:{name:'Improvisador',desc:'Presença e espontaneidade. Seu carisma cria conexão no momento.'},E:{name:'Analítico',desc:'Método e lógica. Você sustenta sua mensagem com dados e raciocínio.'}};
+      let current=0,answers=[];
+      const qIndexEl=document.getElementById('qIndex'),barEl=document.getElementById('bar'),qContainer=document.getElementById('qContainer');
+      const startBtn=document.getElementById('startBtn'),nextBtn=document.getElementById('nextBtn'),prevBtn=document.getElementById('prevBtn'),resetBtn=document.getElementById('resetBtn');
+      function goTo(step){['step-welcome','step-questions','step-processing','step-result'].forEach((id,idx)=>document.getElementById(id).classList.toggle('active',idx===step));if(step===1){current=0;answers=[];renderQ();updateProgress();}} 
+      function renderQ(){const q=questions[current];qIndexEl.textContent=current+1;let html=`<h2 style=\"margin:8px 0 12px 0; color:var(--primary)\">${q.title}</h2><fieldset class=\"options\">`;q.options.forEach(opt=>html+=`<label class='opt'><input type='radio' name='q${current}' value='${opt.key}'/><span><strong>${opt.key})</strong> ${opt.label}</span></label>`);html+='</fieldset>';qContainer.innerHTML=html;} 
+      function updateProgress(){barEl.style.width=((current)/questions.length*100)+'%';} 
+      function nextQ(){const sel=document.querySelector(`input[name='q${current}']:checked`);if(!sel){alert('Selecione uma alternativa para continuar.');return;}answers[current]=sel.value;if(current<questions.length-1){current++;renderQ();updateProgress();}else{barEl.style.width='100%';processResult();}} 
+      function prevQ(){if(current===0)goTo(0);else{current--;renderQ();updateProgress();}} 
+      function processResult(){goTo(2);const msgs=['Analisando suas respostas…','Calculando seu perfil de palestrante…','Concluído.'];let i=0;const pm=document.getElementById('procMsg');(function tick(){pm.textContent=msgs[i++];if(i<msgs.length)setTimeout(tick,900);else setTimeout(showResult,600);})();} 
+      function showResult(){const counts={A:0,B:0,C:0,D:0,E:0};answers.forEach(k=>counts[k]++);const sorted=Object.entries(counts).sort((a,b)=>b[1]-a[1]),top=sorted[0],second=sorted[1];const resTitle=document.getElementById('resTitle'),resSubtitle=document.getElementById('resSubtitle'),resPill=document.getElementById('resPill');if(top[1]===second[1]&&top[1]!==0){const p1=keyToProfile[top[0]].name,p2=keyToProfile[second[0]].name;resTitle.textContent=`${p1} + ${p2}`;resSubtitle.textContent=`Bom, parece que você tem um perfil de palestrante que transita entre o/a ${p1} e ${p2}.`;resPill.textContent=`Empate: ${top[1]}×${second[1]}`;}else{const p=keyToProfile[top[0]];resTitle.textContent=p.name;resSubtitle.textContent=p.desc;resPill.textContent=`Predominante: ${top[1]} ponto(s)`;}goTo(3);} 
+      startBtn.addEventListener('click',()=>goTo(1));
+      nextBtn.addEventListener('click',nextQ);
+      prevBtn.addEventListener('click',prevQ);
+      resetBtn.addEventListener('click',()=>goTo(0));
+    });
   </script>
 </body>
 </html>
